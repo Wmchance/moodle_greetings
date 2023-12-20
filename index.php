@@ -12,20 +12,28 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
- *
  * @package     local_greetings
- * @copyright   2023 William Chance <will@email.com>
+ * @copyright   2023 William Chance <will@email>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+require_once('../../config.php');
+$context = context_system::instance();
+$PAGE->set_context($context);
+$PAGE->set_url(new moodle_url('/local/greetings/index.php'));
+$PAGE->set_pagelayout('standard');
+$PAGE->set_title($SITE->fullname);
+$PAGE->set_heading(get_string('pluginname', 'local_greetings'));
 
-$plugin->component = 'local_greetings';
-$plugin->release = '0.1.0';
-$plugin->version = 2023121800;
-$plugin->requires = 2020061500;
-$plugin->maturity = MATURITY_ALPHA;
+echo $OUTPUT->header();
+
+if (isloggedin()) {
+    echo '<h3>Greetings, ' . fullname($USER) . '</h3>';
+} else {
+    echo '<h3>Greetings, user</h3>';
+}
+
+echo $OUTPUT->footer();

@@ -19,7 +19,7 @@
  *
  * @package     local_greetings
  * @category    string
- * @copyright   2023 William Chance <wmchance@protonmail.com>
+ * @copyright   2023 William Chance <will@email.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
